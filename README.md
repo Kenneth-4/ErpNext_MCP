@@ -88,7 +88,7 @@ Ensure Rust (1.80+) and Cargo are installed:
 
 ```bash
 # Clone the repository
-git clone https://github.com/hti-dev/ErpNext_MCP.git
+git clone https://github.com/<YOUR_FOLDER>/ErpNext_MCP.git
 cd ErpNext_MCP
 
 # Build the release binary
@@ -112,7 +112,7 @@ Add the server entry to your global Antigravity configuration file:
 {
   "mcpServers": {
     "erpnext": {
-      "command": "C:\\hti-dev\\ErpNext_MCP\\target\\release\\erpnext-mcp.exe",
+      "command": "C:\\<YOUR_FOLDER>\\ErpNext_MCP\\target\\release\\erpnext-mcp.exe",
       "args": [],
       "env": {
         "ERPNEXT_URL": "https://erp.yourdomain.com",
@@ -162,7 +162,7 @@ Add to your Claude Desktop configuration file:
 {
   "mcpServers": {
     "erpnext": {
-      "command": "C:\\hti-dev\\ErpNext_MCP\\target\\release\\erpnext-mcp.exe",
+      "command": "C:\\<YOUR_FOLDER>\\ErpNext_MCP\\target\\release\\erpnext-mcp.exe",
       "env": {
         "ERPNEXT_URL": "https://erp.yourdomain.com",
         "ERPNEXT_API_KEY": "your_api_key",
@@ -182,7 +182,7 @@ Add to your project's `.mcp.json` or workspace settings:
 {
   "mcpServers": {
     "erpnext": {
-      "command": "C:\\hti-dev\\ErpNext_MCP\\target\\release\\erpnext-mcp.exe",
+      "command": "C:\\<YOUR_FOLDER>\\ErpNext_MCP\\target\\release\\erpnext-mcp.exe",
       "env": {
         "ERPNEXT_URL": "https://erp.yourdomain.com",
         "ERPNEXT_API_KEY": "your_api_key",
