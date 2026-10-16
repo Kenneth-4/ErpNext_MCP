@@ -1,8 +1,8 @@
 [package]
-name = "erpnext-mcp"
+name = "erpnext-mcp-rust"
 version = "0.1.0"
-edition = "2024"
-authors = ["Kenneth Cubian <kenneth@hti.ph>"]
+edition = "2026"
+authors = ["Kenneth Cubian"]
 description = "High-performance Model Context Protocol (MCP) server for ERPNext and Frappe Framework written in Rust"
 license = "MIT"
 
