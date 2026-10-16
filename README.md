@@ -81,10 +81,105 @@ Configure the server using environment variables or a local `.env` file in the w
 
 ---
 
+## Prerequisites: Installing Rust (If Not Already Installed)
+
+Before building this MCP server, you will need the Rust toolchain (`rustc` and `cargo`) installed on your system.
+
+### 1. Windows Installation
+
+#### Step A: Install Rust via `rustup`
+Open **PowerShell** or **Command Prompt** and run:
+```powershell
+winget install Rustlang.Rustup
+```
+*(Alternatively, download and run `rustup-init.exe` directly from [https://rustup.rs/](https://rustup.rs/)).*
+
+#### Step B: C Linker & Build Tools (Required on Windows)
+Rust requires a C linker to build native binaries. Choose **one** of the two options below:
+
+- **Option 1: MSVC Build Tools (Default & Recommended)**
+  Install Microsoft C++ Build Tools:
+  ```powershell
+  winget install Microsoft.VisualStudio.2022.BuildTools
+  ```
+  *(During installation, ensure the **"Desktop development with C++"** workload is checked).*
+
+- **Option 2: Lightweight MinGW-w64 (No Visual Studio Required)**
+  If you do not want to install Visual Studio, you can use the GNU toolchain:
+  ```powershell
+  # 1. Install MinGW-w64 GCC
+  winget install BrechtSanders.WinLibs.POSIX.MSVCRT
+
+  # 2. Configure Rust to use the GNU toolchain by default
+  rustup toolchain install stable-x86_64-pc-windows-gnu
+  rustup default stable-x86_64-pc-windows-gnu
+  ```
+
+---
+
+### 2. macOS Installation
+
+1. Install Xcode Command Line Tools (for the native C compiler and linker):
+   ```bash
+   xcode-select --install
+   ```
+2. Install Rust via `rustup`:
+   ```bash
+   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+   ```
+3. Follow the on-screen instructions, then restart your terminal or run:
+   ```bash
+   source "$HOME/.cargo/env"
+   ```
+
+---
+
+### 3. Linux Installation (Ubuntu, Debian, Fedora, Arch)
+
+1. Install essential build tools (GCC, Make, and C libraries):
+   ```bash
+   # Ubuntu / Debian / Linux Mint:
+   sudo apt update && sudo apt install -y build-essential curl pkg-config libssl-dev
+
+   # Fedora / RHEL:
+   sudo dnf groupinstall -y "Development Tools"
+   sudo dnf install -y curl
+
+   # Arch Linux:
+   sudo pacman -S --needed base-devel curl
+   ```
+2. Install Rust via `rustup`:
+   ```bash
+   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+   ```
+3. Restart your terminal or run:
+   ```bash
+   source "$HOME/.cargo/env"
+   ```
+
+---
+
+### 4. Verify Your Rust Installation
+
+Open a **new** terminal window and verify that both `rustc` and `cargo` are available on your PATH:
+
+```bash
+rustc --version
+cargo --version
+```
+
+You should see output similar to:
+```text
+rustc 1.84.0 (or newer)
+cargo 1.84.0 (or newer)
+```
+
+---
+
 ## Installation & Setup
 
 ### 1. Build from Source
-Ensure Rust (1.80+) and Cargo are installed:
+Once Rust is verified, clone this repository and compile the optimized release binary:
 
 ```bash
 # Clone the repository
@@ -95,7 +190,9 @@ cd ErpNext_MCP
 cargo build --release
 ```
 
-The resulting single binary executable is located at `target/release/erpnext-mcp` (or `target/release/erpnext-mcp.exe` on Windows).
+The compiled standalone executable will be located at:
+- **Windows**: `target\release\erpnext-mcp.exe`
+- **Linux / macOS**: `target/release/erpnext-mcp`
 
 ### 2. Configure MCP Clients
 
